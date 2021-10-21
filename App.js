@@ -15,6 +15,9 @@ import {
 
 import BottomNavigation from './pages/navigation/BottomNavigation';
 import WelcomeScreen from './pages/authorization/WelcomeScreen';
+import RegisterFirstStepScreen from './pages/authorization/register/RegisterFirstStepScreen';
+import RegisterSecondStepScreen from './pages/authorization/register/RegisterSecondStepScreen';
+import LoginScreen from './pages/authorization/LoginScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,19 +26,13 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} options={{headerTitle: "поділись!"}}/>
+          <Stack.Screen name='RegisterFirstStepScreen' component={RegisterFirstStepScreen} options={{headerTitle: "Контактні дані"}}/>
+          <Stack.Screen name='RegisterSecondStepScreen' component={RegisterSecondStepScreen} options={{headerTitle: "Дані для входу"}}/>
+          <Stack.Screen name='LoginScreen' component={LoginScreen} options={{headerTitle: "Сторінка логіну"}}/>
           <Stack.Screen name='BottomNavigation' component={BottomNavigation} options = {{headerShown:false}}/>
-          <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
