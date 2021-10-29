@@ -26,11 +26,12 @@ export default function App() {
     <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
+        <Stack.Screen name='BottomNavigation' component={BottomNavigation} options = {{headerShown:false}}/>
           <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} options={{headerTitle: "поділись!"}}/>
           <Stack.Screen name='RegisterFirstStepScreen' component={RegisterFirstStepScreen} options={{headerTitle: "Контактні дані"}}/>
           <Stack.Screen name='RegisterSecondStepScreen' component={RegisterSecondStepScreen} options={{headerTitle: "Дані для входу"}}/>
           <Stack.Screen name='LoginScreen' component={LoginScreen} options={{headerTitle: "Сторінка логіну"}}/>
-          <Stack.Screen name='BottomNavigation' component={BottomNavigation} options = {{headerShown:false}}/>
+        
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

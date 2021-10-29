@@ -19,6 +19,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import { roles } from '../../../constants';
+import LoginService from '../../../service/LoginService';
 
 function RegisterSecondStepScreen({navigation, route}) {
 
@@ -26,11 +27,10 @@ function RegisterSecondStepScreen({navigation, route}) {
 
   useEffect(() => {
     setData(route.params.formData);
-    alert('sdfd');
   }, [])
 
   const redirectToLastRegisterStepScreen = (navigation) => {
-    if (formData.role == roles.HELPER_ROLE) console.log(formData); //navigation.navigate('HomeScreen')
+    if (formData.role == roles.HELPER_ROLE) LoginService.register(formData, navigation.navigate('BottomNavigation'));
     if (formData.role == roles.SEEKER_ROLE) console.log("redirecting to seeker registerting page");
     if (formData.role == roles.VOLUNTEER_ROLE) console.log("redirecting to volunteer registering page"); 
 }
@@ -50,7 +50,7 @@ function RegisterSecondStepScreen({navigation, route}) {
               _text={{ color: 'muted.700', fontSize: 'xs', fontWeight: 500 }}>
               Номер телефону
             </FormControl.Label>
-            <Input onChangeText={(value) => setData({ ...formData, phoneNumber: value })}/>
+            <Input onChangeText={(value) => setData({ ...formData, phone: value })}/>
           </FormControl>
           <FormControl>
             <FormControl.Label

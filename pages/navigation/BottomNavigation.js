@@ -21,12 +21,13 @@ function BottomNavigation() {
           opacity: 0
         },
         headerLeft: () => (
-          <Heading ml="3" >поділись!</Heading>
+          <Heading ml="5" width="100%">поділись!</Heading>
         ),
         headerRight: () => (
           <SearchIcon
             size="5"
             m="3"
+            mr="5"
           />
         ),
         tabBarIcon: () => (

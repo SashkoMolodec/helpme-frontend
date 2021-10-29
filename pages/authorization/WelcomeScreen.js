@@ -33,12 +33,6 @@ function WelcomeScreen ({navigation}) {
     useEffect(() => {
     }, [])
 
-    const redirectToRegisterScreen = (navigation) => {
-        if (rolePressed == roles.HELPER_ROLE) navigation.navigate('RegisterFirstStepScreen', {role: rolePressed});
-        if (rolePressed == roles.SEEKER_ROLE) console.log("redirecting to seeker registerting page");;
-        if (rolePressed == roles.VOLUNTEER_ROLE) console.log("redirecting to volunteer registering page"); 
-    }
-
     return (
         <Box safeArea flex={1} p="2" w="95%" mx="auto" py="8">
         <Heading size="xl" pl="2" color="coolGray.800" fontWeight="600">
@@ -51,8 +45,7 @@ function WelcomeScreen ({navigation}) {
         <VStack space={3} mt="5">
         <Pressable
             onPress={() => {
-                setRolePressed(0)
-                console.log(rolePressed)
+                setRolePressed(roles.HELPER_ROLE)
         }}
         >
             <Box
@@ -68,8 +61,7 @@ function WelcomeScreen ({navigation}) {
 
         <Pressable
             onPress={() => {
-                setRolePressed(1)
-                console.log(rolePressed)
+                setRolePressed(roles.SEEKER_ROLE)
         }}
         >
             <Box 
@@ -85,8 +77,7 @@ function WelcomeScreen ({navigation}) {
 
         <Pressable
             onPress={() => {
-                setRolePressed(2)
-                console.log(rolePressed)
+                setRolePressed(roles.VOLUNTEER_ROLE)
         }}
         >
             <Box 
@@ -101,7 +92,7 @@ function WelcomeScreen ({navigation}) {
             </Box>
         </Pressable>
           
-        <Button mt="2" colorScheme="indigo" _text={{ color: 'white' }} onPress={() => redirectToRegisterScreen(navigation)}>
+        <Button mt="2" colorScheme="indigo" _text={{ color: 'white' }} onPress={() => navigation.navigate('RegisterFirstStepScreen', {role: rolePressed})}>
           Продовжити
         </Button>
 

@@ -38,7 +38,6 @@ function RegisterFirstStepScreen({navigation, route}) {
     setData({ ...formData, birthDate: currentDate.toJSON()});
   };
 
-
   console.log(formData);
 
     return (

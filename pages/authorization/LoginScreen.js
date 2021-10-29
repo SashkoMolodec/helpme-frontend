@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, TouchableOpacity, SafeAreaView, ScrollView, Image } from 'react-native';
 import {
-    Box,
-    Text,
-    Heading,
-    VStack,
-    FormControl,
-    Input,
-    Link,
-    Button,
-    Icon,
-    IconButton,
-    HStack,
-    Divider,
-    View
-  } from 'native-base';
-  
+  Box,
+  Text,
+  Heading,
+  VStack,
+  FormControl,
+  Input,
+  Link,
+  Button,
+  Icon,
+  IconButton,
+  HStack,
+  Divider,
+  View
+} from 'native-base';
+
 function LoginScreen() {
 
-    return (
-      <Box safeArea flex={1} p="2" py="8" w="90%" mx="auto">
+  const [formData, setData] = React.useState({});
+
+  return (
+    <Box safeArea flex={1} p="2" py="8" w="90%" mx="auto">
       <Heading size="lg" fontWeight="600" color="coolGray.800">
         Вітаємо!
       </Heading>
@@ -35,7 +37,7 @@ function LoginScreen() {
               fontSize: 'xs',
               fontWeight: 500,
             }}>
-            Email
+            Номер телефону
           </FormControl.Label>
           <Input />
         </FormControl>
@@ -75,7 +77,7 @@ function LoginScreen() {
         </HStack>
       </VStack>
     </Box>
-    )
+  )
 }
 
 export default LoginScreen
