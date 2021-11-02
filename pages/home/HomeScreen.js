@@ -3,21 +3,14 @@ import { VirtualizedList, ScrollView } from "react-native"
 import { View, Text, Heading, Center, Box, Stack, List, Avatar, Image, HStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { padding } from 'styled-system';
+import { FlatList } from 'react-native-gesture-handler';
 
 function HomeScreen() {
 
     useEffect(() => {
     }, [])
 
-
-    const DATA = [];
-
-    const getItem = (_data, index) => ({
-        id: Math.random().toString(12).substring(0),
-        title: `Item ${index + 1}`,
-    })
-
-    const getItemCount = (_data) => 20
+    const DATA = ["", "", "",""];
 
     const ThingItem = ({ item }) => (
         <Stack direction="column" mr={3}>
@@ -35,9 +28,9 @@ function HomeScreen() {
             }}
         />
         <Text mx="auto">S</Text>
-    </Stack>
+        </Stack>
     )
-    const Item2 = ({ title }) => (
+    const ItemRequest = ({ title }) => (
         <List.Item
             bg="white"
             borderRadius="md"
@@ -78,14 +71,9 @@ function HomeScreen() {
 
     return (
         <Box flex={1} mx="auto">
-
-            <VirtualizedList
-                style={{ padding: 10 }}
-                data={DATA}
-                renderItem={({ item, index }) => {
-                    if (index == 0) {
-                        console.log("sdf");
-                        return <Box
+            <FlatList
+                ListHeaderComponent={() => <Box>
+                    <Box
                             p={3}
                             rounded="2xl"
                             bg="white"
@@ -95,9 +83,8 @@ function HomeScreen() {
                             <Heading size="md"><Ionicons name="map" size={18}></Ionicons> Віднести речі</Heading>
                             <Text mt={1}>Переглянь карту найближчих пунктів збору речей твого міста.</Text>
                         </Box>
-                    }
-                    else if (index == 1) {
-                        return <Box
+
+                        <Box
                             p={3}
                             rounded="2xl"
                             bg="white"
@@ -107,18 +94,13 @@ function HomeScreen() {
                             <Heading size="md"><Ionicons name="body" size={18}></Ionicons> Допомогти</Heading>
                             <Text mt={1}>Дозволь системі підібрати потребуючого якому знадобиться саме твоя річ.</Text>
                         </Box>
-                    }
 
-                    else if (index == 2) {
-                        return <Heading size="md" mb={3} ml={3}>Активні запити</Heading>
-                    }
-                    else {
-                        return <Item2 />
-                    }
-                }}
+                        <Heading size="md" mb={3} ml={3}>Активні запити</Heading>
+                </Box>}
+                style={{ padding: 10 }}
+                data={DATA}
+                renderItem={({ item }) => <ItemRequest />}
                 keyExtractor={(item) => item.key}
-                getItemCount={getItemCount}
-                getItem={getItem}
             />
 
         </Box>
